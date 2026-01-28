@@ -825,6 +825,8 @@ goods(背景の関係上pointセクション属性)
   .goods_container_box{
     width: min(70%, 520px);
     text-align: left;
+    margin-bottom: 40px;
+
     
   }
 
