@@ -1,0 +1,863 @@
+/* ========================
+   ベース設定
+======================== */
+
+html {
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-family: "Noto Sans JP", "M PLUS 1p", sans-serif;
+}
+
+body{
+  margin: 0;
+  font-family: "Zen Antique", serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+}
+
+img, picture{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+ トップ
+========================= */
+#top{
+  position: relative; 
+  background:
+    url("img/top_pc.png") center calc(40% - 0px) / 100% auto no-repeat,
+    linear-gradient(
+      to bottom,
+      #F5E9DD 0%,
+      #F5E9DD 70%,
+      #582B12 70%,
+      #582B12 100%
+    );
+
+  animation: bgBreath 3s ease-in-out infinite alternate;
+}
+
+@keyframes bgBreath {
+  from {
+    background-size: 100% auto, auto;
+  }
+  to {
+    background-size: 130% auto, auto;
+  }
+}
+
+
+
+.schedule{
+  bottom: 10px;
+}
+
+.toptext{
+  font-family: 'Times New Roman', Times, serif;
+
+  color: #582B12;
+  font-weight: 200;
+  font-size: 1.7rem;
+  margin: 0;          /* ←これが最重要 */
+  padding-left: 250px;
+  padding-top: 30px;
+  line-height: 1.2;
+}
+
+.toptext01{
+  font-family: 'Times New Roman', Times, serif;
+  color: #582B12;
+  font-weight: 200;
+  font-size: 1.7rem;
+  margin: 0;          /* ←これが最重要 */
+  padding-left: 250px;
+  padding-top: 7px;
+  line-height: 1.2;
+}
+
+.top_container{
+  display: flex;
+  align-items: flex-end;     /* 下揃え */
+  justify-content: center;   /* ← 横方向中央寄せ */
+  gap: 12px;
+  flex-wrap: nowrap;
+  color: #582B12;
+  margin-bottom: 0;   /* ←負のmarginやめる */
+  padding-top: 1%;
+}
+
+
+
+/* ★デフォルト余白を殺す（重要） */
+.top_container h1,
+.top_container .subtitle{
+  margin: 0;
+}
+
+/* ★h1の行高でズレやすいので固定 */
+.top_container h1{
+  font-size: 8.5rem;
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
+  letter-spacing: -5px;
+  line-height: 0.6;         /* ここ重要 */
+  margin-top: 2%;
+}
+
+/* subtitle側も行高を揃えると安定 */
+.top_container .subtitle{
+  font-size: 1.2rem;
+  letter-spacing: -1px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 共通 */
+.type span{
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: charFade 0.6s ease forwards;
+}
+
+/* アニメーション */
+@keyframes charFade{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.type span:nth-child(1)  { animation-delay: 0.10s; }
+.type span:nth-child(2)  { animation-delay: 0.17s; }
+.type span:nth-child(3)  { animation-delay: 0.24s; }
+.type span:nth-child(4)  { animation-delay: 0.31s; }
+.type span:nth-child(5)  { animation-delay: 0.38s; }
+.type span:nth-child(6)  { animation-delay: 0.45s; }
+.type span:nth-child(7)  { animation-delay: 0.52s; }
+.type span:nth-child(8)  { animation-delay: 0.59s; }
+.type span:nth-child(9)  { animation-delay: 0.66s; }
+.type span:nth-child(10) { animation-delay: 0.71s; }
+
+/* 画像の初期状態 */
+.top_img{
+  width: 60%;
+  height: auto;
+  margin-top: -2%;
+
+  opacity: 0;
+  transform: translateY(20px) rotate(15deg);
+  animation: imgFadeUp 1.4s ease-out forwards;
+  animation-delay: 0.6s;
+
+}
+
+/* アニメーション定義 */
+@keyframes imgFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(15deg);
+  }
+}
+
+/* 親（位置調整用） */
+.schedule{
+  position: absolute;
+  left: 25%;
+  bottom: 8%;
+  transform: translateX(-0%);
+  z-index: 3;
+  
+}
+
+/* 中身（ピル型バッジ） */
+.schedule p{
+  margin: 0;
+  padding: 10px 200px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #582B12;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid #582B12;
+  border-radius: 999px;
+  letter-spacing: -0px;
+  backdrop-filter: blur(2px); /* うっすら高級感 */
+}
+
+
+/* ふわふわ用 */
+@keyframes floating {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.btn-circle-border-double{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 160px;
+  height: 160px;
+
+  color: #fff;
+  background: #ff2b5c;
+  border-radius: 50%;
+  border: double 7px #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+
+
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+
+  position: fixed;
+  right: 45px;
+  bottom: 45px;
+  z-index: 9999;
+
+  animation: floating 2.5s ease-in-out infinite; /* ★通常時ふわふわ */
+}
+
+/* 回転させるのは中身だけ */
+.btn-inner{
+  display: inline-block;
+  transition: transform .6s, color .2s;
+  transform-style: preserve-3d;
+}
+
+/* hover */
+.btn-circle-border-double:hover{
+  color: #ffff00;
+}
+
+.btn-circle-border-double:hover .btn-inner{
+  transform: rotateY(360deg); /* ★回転復活 */
+}
+
+/* 念のため a 全体 */
+a{ text-decoration: none; }
+
+
+/* =========================
+ 効果
+========================= */
+
+
+#introduction{
+  margin: 0;
+  padding-top: 0;
+  background-color: #582B12;
+}
+
+#introduction{ padding-top: 10px; }
+#introduction .introduction_text{ margin-top: 0; }
+
+.introduction_text{
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 100;
+  line-height: 55px;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 1px;
+  margin-bottom: 100px;
+}
+
+.introductionbox{
+  display: flex;
+  justify-content: center;   /* ← 横方向中央 */
+  gap: 32px;
+  padding-bottom: 100px;
+}
+
+.introduction_container01,
+.introduction_container02,
+.introduction_container03{
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;   /* ← 画像基準を中央に */
+}
+
+/* 画像 */
+.introduction_container01 img,
+.introduction_container02 img,
+.introduction_container03 img{
+  width: 80%;
+  display: block;
+}
+
+.introduction_container01 p,
+.introduction_container02 p,
+.introduction_container03 p{
+  position: absolute;
+  bottom: 15px;
+  left: 50%;                 /* ← これが抜けてた */
+  transform: translateX(-50%);
+  width: 70%;                /* ← 画像と同じ幅 */
+  margin: 0;
+  color: #582B12;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+
+/* =========================
+ ポイント
+========================= */
+
+#point{
+  position: relative;
+  overflow: hidden;
+  padding-top: 70px;
+  background:
+    url("img/pc_background.png") center 60px / 150% auto no-repeat,
+    #F5E9DD;
+}
+
+h2{
+  text-align: center;
+  font-size: 2rem;
+  color: #582B12;
+  letter-spacing: -1px;
+  margin-bottom: -10px;
+}
+
+.border{
+  width: min(480px, 80%);
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #582B12,
+    transparent
+  );
+  margin: 12px auto 120px;
+}
+
+
+/* =========================
+  各 POINT カード
+========================= */
+.point_container{
+  position: relative;
+  width: min(860px, 92%);
+  margin: 0 auto 90px;
+
+  background: rgba(255,255,255,0.96);
+  border: 2px solid #582B12;
+  border-radius: 14px;
+
+  padding: 40px 30px;
+  box-sizing: border-box;
+}
+
+/* カード内テキスト中央寄せ */
+.point_container_text{
+  text-align: center;
+  color: #582B12;
+  font-family: "Zen Antique", serif;
+}
+
+/* タイトル */
+.point_title{
+  margin: 0 0 18px;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* 本文 */
+.point_text{
+  margin: 0;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+/* =========================
+  左の丸い POINT バッジ
+========================= */
+.pointicon{
+  position: absolute;
+  left: -46px;     /* カードからはみ出す量 */
+  top: -24px;      /* 画像っぽく少し上に */
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background: #6A3A17; /* 画像の茶色に近い */
+  display: grid;
+  place-items: center;
+}
+
+/* POINT文字 */
+.pointicon p{
+  margin: 0;
+  color: #fff;
+  font-family: "Zen Antique", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+}
+
+
+
+/* =========================
+goods(背景の関係上pointセクション属性)
+========================= */
+
+.goods_text {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.4;
+  color: #582B12; 
+  margin-bottom: 30px;
+}
+
+
+  /* =========================
+  商品（goods）エリア：画像のようなレイアウト
+========================= */
+
+.goods_container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-top: 70px;
+  font-family: "Zen Antique", serif;
+}
+
+/* 左：商品画像 */
+.goods_container > img{
+  width: min(440px, 42vw);
+  height: auto;
+  display: block;
+  margin-top: -80px;   /* ← 数値を調整 */
+}
+
+/* 右：テキストボックス */
+.goods_container_box{
+  width: min(400px, 52vw);
+  color: #582B12;
+  font-family: "Zen Antique", serif;
+}
+
+/* タイトル：下線あり（画像の見た目） */
+.goods_title{
+  margin: 0;
+  font-size: clamp(32px, 3.7vw, 54px);
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  display: inline-block;
+}
+
+/* サブタイトル */
+.goods_subtitle{
+  margin: 2px 0 22px;
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: 0.08em;
+}
+
+/* 価格ブロック（12粒 / 大袋） */
+.goods_12,
+.goods_240{
+  padding: 14px 0;
+}
+
+.goods_container_box_text{
+  margin: 0 0 6px;
+  font-size: clamp(18px, 2vw, 28px);
+  letter-spacing: 0.06em;
+}
+
+/* 金額 */
+.money{
+  margin: 0;
+  font-size: clamp(30px, 3vw, 48px);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.money span{
+  font-size: 0.45em;   /* （税込〜）を小さく */
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+/* 区切り線（12粒と大袋の間に1本） */
+.goods_240{
+  border-top: 2px solid #582B12;
+  margin-top: 10px;
+  padding-top: 18px;
+}
+
+
+
+/* =========================
+フッター
+========================= */
+
+#footer{
+  display: flex;              /* ★flex化 */
+  align-items: center;        /* ★上下中央 */
+  justify-content: center;    /* ★左右中央 */
+
+  height: 100px;               /* ← 好きな高さに調整 */
+  background: #582B12;
+
+  margin: 0;
+  padding: 0;
+}
+
+#footer p{
+  margin: 0;                  /* ★余白リセット */
+  line-height: 1;             /* ★縦ズレ防止 */
+  color: #fff;
+  font-size: 1.5rem;          /* 任意 */
+}
+
+
+/* =========================
+  Responsive（スマホ）
+========================= */
+@media (max-width: 768px){
+
+  html, body{
+    width: 100%;
+    overflow-x: hidden; /* ★横スクロール（白余白）を止める */
+  }
+  body{
+    padding-bottom: 0; /* ← これでフッター下の空白が消える */
+  }
+  #footer{ margin: 0; padding: 0; }
+  #footer p{ margin: 0; }
+
+  html, body{ overflow-x: hidden; }
+
+  #top{
+    overflow-x: hidden; /* ★回転画像がはみ出しても切る */
+  }
+  /* ---- TOP ---- */
+  /* ===== TOP背景（スマホ） ===== */
+  #top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background:
+      url("img/mobile_top.png") center -70% / cover no-repeat,
+      #F5E9DD;
+
+    animation: none;
+    padding-top: 12px;
+  }
+
+  /* ① キャッチ */
+  .toptext{
+    order: 1;
+    white-space: nowrap;
+    text-align: center;
+    font-size: clamp(0.90rem, 4.2vw, 1.15rem);
+    padding-left: 0;
+    padding-top: 2%;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+
+  }
+
+  .toptext01{
+    order: 1;
+    white-space: nowrap;
+    text-align: left;
+    font-size: clamp(0.90rem, 4.2vw, 1.15rem);
+    padding-left: 0;
+    padding-top: 1%;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: -15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+  }
+
+  /* ② チョコ画像 */
+  .top_img{
+    order: 2;
+    width: min(120vw, 470px);
+    opacity: 1;
+    transform: rotate(15deg);
+    animation: none;
+    margin-bottom: -10px;
+  }
+
+  /* ③ タイトル */
+  .top_container{
+    order: 3;
+    margin: 0;
+    display: flex;
+    flex-direction: column;   /* ★ 縦並び */
+    gap: 3px;                 /* 行間（お好みで） */
+  }
+
+  .top_container h1{
+    font-size: clamp(2rem, 14vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-top: -20px;
+  }
+
+
+  /* 文字アニメも止める */
+  .type span{
+    animation: none;
+    opacity: 1;
+    transform: none;
+    color: #fff;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  
+
+
+  /* ===== 申込期限 ===== */
+  .schedule{
+    order: 4;
+    position: static;        /* absolute解除 */
+    transform: none;
+    margin: 20px 0 30px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .schedule p{
+    background: none;        /* 装飾すべて削除 */
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+
+    color: #fff;             /* ★白文字 */
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 0.04em;
+    
+  }
+
+/* ⑤ 注文ボタン */
+  /* PC用のふわふわ回転はスマホでは無し */
+
+  .btn-circle-border-double br{
+    display: none;
+  }
+
+  .btn-circle-border-double{
+    animation: none;
+  }
+  .btn-inner{
+    transition: none;
+    transform: none;
+  }
+
+  .btn-circle-border-double{
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    /* 横長ボタン */
+    width: min(87vw, 500px);
+    height: 55px;
+    border-radius: 999px;
+
+    background: #ff0a78;           /* ピンク */
+    border: none;
+
+    /* 影（うっすら） */
+    box-shadow: 0 10px 24px rgba(0,0,0,.25);
+
+    /* 文字 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: .01em;
+    text-decoration: none;
+
+    /* iPhoneの下端に被らない保険 */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* 押しやすい演出 */
+  .btn-circle-border-double:active{
+    transform: translateX(-50%) translateY(2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.22);
+  }
+
+  /* span側も白固定 */
+  .btn-inner{
+    color: #fff;
+  }
+  .btn-circle-border-double:hover,
+  .btn-circle-border-double:hover .btn-inner{
+    color: #fff; /* スマホはhoverで色変えない */
+  }
+
+
+  /* ---- introduction ---- */
+  .introduction_text{
+    font-size: 1.1rem;
+    line-height: 1.5;
+    padding: 0 15px;
+    margin-bottom: 36px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .introduction_text br{
+    display: none;
+  }
+
+  .introductionbox{
+    flex-direction: column;   /* 横並び→縦並び */
+    gap: 35px;
+    padding-bottom: 70px;
+  }
+
+  .introduction_container01 img,
+  .introduction_container02 img,
+  .introduction_container03 img{
+    width: 70%;
+  }
+
+  .introduction_container01 p,
+  .introduction_container02 p,
+  .introduction_container03 p{
+    width: 59%;
+    font-size: 1.5rem;
+    bottom: 14px;
+  }
+
+  /* ---- point ---- */
+  #point{
+    padding-top: 28px;
+    background:
+      url("img/pc_background.png") center 40px / 190% auto no-repeat,
+      #F5E9DD;
+  }
+
+  h2{
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+
+  .border{
+    width: min(320px, 86%);
+    margin: 10px auto 26px;
+  }
+
+  .point_container{
+    width: min(92%, 680px);
+    padding: 18px 18px;
+    margin: 0 auto 25px;
+    border-radius: 12px;
+  }
+
+  .pointicon{
+    left: -9px;
+    top: -17px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .pointicon p{
+    font-size: 0.6rem;
+  }
+
+  .point_title{
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .point_text{
+    font-size: 1rem;
+    line-height: 1.4;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+  }
+
+  /* ---- goods ---- */
+  .goods_text{
+    font-size: 1.2rem;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    padding: 0 12px;
+    margin-bottom: -50px;
+  }
+  
+
+  .goods_container{
+    flex-direction: column;    /* 横並び→縦 */
+    align-items: center;
+    padding-top: 30px;
+    gap: 14px;
+  }
+
+  .goods_container > img{
+    width: min(280px, 80vw);
+    margin-top: 0;
+    margin-bottom: -50px;
+  }
+
+  .goods_container_box{
+    width: min(70%, 520px);
+    text-align: left;
+    
+  }
+
+  .goods_title{
+    font-size: 2.5rem;
+    letter-spacing: 0;
+    padding-left: 20px;
+  }
+
+  .goods_subtitle{
+    margin-bottom: 14px;
+    font-size: 1.3rem;
+    padding-left: 20px;
+  }
+
+  .goods_12,
+  .goods_240{
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .goods_240{
+    margin-top: 8px;
+    padding-top: 14px;
+  }
+
+  /* ---- footer ---- */
+  #footer{
+    height: 120px;
+  }
+
+  #footer p{
+    font-size: 1.05rem;
+    margin-top: -60px;
+  }
+}
