@@ -483,7 +483,7 @@ goods(背景の関係上pointセクション属性)
 .money{
   margin: 0;
   font-size: clamp(30px, 3vw, 48px);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
   line-height: 1.1;
   font-weight: 600;
 }
@@ -492,6 +492,7 @@ goods(背景の関係上pointセクション属性)
   font-size: 0.45em;   /* （税込〜）を小さく */
   font-weight: 400;
   margin-left: 6px;
+letter-spacing: 0;
 }
 
 /* 区切り線（12粒と大袋の間に1本） */
@@ -499,6 +500,10 @@ goods(背景の関係上pointセクション属性)
   border-top: 2px solid #582B12;
   margin-top: 10px;
   padding-top: 18px;
+}
+
+.goods_container_box_text{
+  margin-right: 40px;
 }
 
 
@@ -826,7 +831,6 @@ goods(背景の関係上pointセクション属性)
     width: min(70%, 520px);
     text-align: left;
     margin-bottom: 40px;
-
     
   }
 
@@ -859,7 +863,7 @@ goods(背景の関係上pointセクション属性)
   }
 
   #footer p{
-    font-size: 1.05rem;
+    font-size: 1rem;
     margin-top: -60px;
   }
 }
